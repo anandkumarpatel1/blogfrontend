@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  > :first-child {
+    width: 40%;
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  >:last-child{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+  }
+}

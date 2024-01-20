@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,9 +11,14 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const {setUser} = UserState()
-
+  const {setUser, user} = UserState()
   const navigate = useNavigate();
+
+  useEffect(() =>{
+    if(user){
+      navigate('/')
+    }
+  })
 
   const handleOnSubmit = async (evt) => {
     try {

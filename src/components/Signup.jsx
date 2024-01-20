@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import { toast } from "react-toastify";
 import axios from 'axios'
@@ -10,9 +10,14 @@ function SignUpForm() {
   const [password, setPassword] = useState("");
   const [loader,setLoader] = useState(false)
 
-  const {setUser} = UserState()
-
+  const {setUser, user} = UserState()
   const navigate = useNavigate()
+
+  useEffect(() =>{
+    if(user){
+      navigate('/')
+    }
+  })
 
   const handleOnSubmit = async (evt) => {
     try {

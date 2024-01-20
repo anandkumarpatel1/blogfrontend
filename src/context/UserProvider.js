@@ -18,7 +18,6 @@ export const UserProvider = ({ children }) => {
     if (user) {
       user = await JSON.parse(user);
       setUser(user);
-      navigate('/')
       return
     }
 
