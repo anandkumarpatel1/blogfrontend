@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import {useNavigate} from 'react-router-dom'
 import Loader from "../components/Loader";
 import "../styles/Home.scss";
 import PostCard from "../components/PostCard";
@@ -13,17 +14,27 @@ const Home = () => {
   const [pic, setPic] = useState("");
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
+  const [chn, setChn] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
+    fetchUser();
     fetchPosts();
-  }, []);
+  }, [chn]);
+
+  const fetchUser = () =>{
+    let token = localStorage.getItem('user-token')
+    if(!token){
+      navigate('/login')
+    }
+  }
 
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      let token = localStorage.getItem("user");
+      let token = localStorage.getItem("user-token");
       token = await JSON.parse(token);
-      token = token?.token;
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -46,9 +57,8 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      let token = localStorage.getItem("user");
+      let token = localStorage.getItem("user-token");
       token = await JSON.parse(token);
-      token = token?.token;
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +105,7 @@ const Home = () => {
           <>
             <div>
               {posts?.map((item, index) => (
-                <PostCard key={index} item={item} />
+                <PostCard key={index} item={item} chn={chn} setChn={setChn} />
               ))}
             </div>
           </>

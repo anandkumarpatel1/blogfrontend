@@ -13,13 +13,13 @@ const Header = () => {
   };
 
   const LogoutHandler = () => {
-    localStorage.clear('user');
-    window.location.reload()
+    localStorage.clear("user");
+    window.location.reload();
   };
 
   return (
     <div className="header">
-      {user && (
+      { localStorage.getItem('user-token') && (
         <div>
           <div>icon</div>
           <div>
@@ -27,15 +27,16 @@ const Header = () => {
           </div>
           <div>
             <img
-              src={user?.user?.pic}
-              alt={user?.user?.name}
+              src={user?.pic}
+              alt={user?.name}
               onClick={profileHandler}
             />
             <div>
               <div className={`HeaderOption ${option ? "lar" : "sam"}`}>
                 <p
                   onClick={() => {
-                    navigate("/me");
+                    navigate("/me")
+                    setOption(!option)
                   }}
                 >
                   Profile
@@ -44,13 +45,15 @@ const Header = () => {
                 <p
                   onClick={() => {
                     navigate("/contact");
+                    setOption(!option)
                   }}
                 >
                   Contact Us
                 </p>
                 <p
                   onClick={() => {
-                    navigate("/dev");
+                    navigate("/dev")
+                    setOption(!option)
                   }}
                 >
                   Developer

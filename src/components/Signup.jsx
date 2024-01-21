@@ -10,11 +10,12 @@ function SignUpForm({ type, setType }) {
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
 
-  const { setUser, user } = UserState();
+  const { setUser, user, token, setToken } = UserState();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    let token = localStorage.getItem('user-token')
+    if (token) {
       navigate("/");
     }
   });
@@ -46,9 +47,12 @@ function SignUpForm({ type, setType }) {
       );
 
       if (data?.user) {
-        setUser(data);
-        let user = await JSON.stringify(data);
+        setUser(data?.user);
+        setToken(data?.token)
+        let user = await JSON.stringify(data?.user);
+        let token = await JSON.stringify(data?.token)
         localStorage.setItem("user", user);
+        localStorage.setItem("user-token", token);
         navigate("/");
         setLoader(false);
       }

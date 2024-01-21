@@ -5,6 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [token, setToken] = useState()
 
   const navigate = useNavigate()
 
@@ -14,6 +15,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchUser = async () => {
     let user = localStorage.getItem("user");
+    let token = localStorage.getItem('user-token')
 
     if (user) {
       user = await JSON.parse(user);
@@ -21,11 +23,15 @@ export const UserProvider = ({ children }) => {
       return
     }
 
+    if(!token){
+      navigate('/login')
+    }
+
     navigate('/login')
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, token, setToken }}>
       {children}
     </UserContext.Provider>
   );

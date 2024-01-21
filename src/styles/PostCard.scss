@@ -5,6 +5,10 @@
   padding: 10px;
   position: relative;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   > :nth-child(2) {
     width: 100%;
@@ -27,7 +31,7 @@
 
   > img {
     border-radius: 20px;
-    width: 100%;
+    width: 50%;
   }
 }
 

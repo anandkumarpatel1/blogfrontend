@@ -17,7 +17,8 @@ const Login = () => {
   }, []);
 
   const fetchUser = () => {
-    if (user) {
+    let token = localStorage.getItem('user-token')
+    if (token) {
       navigate("/");
     }
   };
