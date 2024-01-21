@@ -39,7 +39,7 @@ const SignInForm = () => {
         sameSite: "None",
       };
       const { data } = await axios.post(
-        "/api/v1/user/login",
+        "https://blog-backend-sigma-three.vercel.app/api/v1/user/login",
         { email, password },
         config
       );

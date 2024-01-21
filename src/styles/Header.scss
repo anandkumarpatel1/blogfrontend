@@ -21,14 +21,47 @@
     background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
     background: linear-gradient(to right, #ff4b2b, #ff416c);
 
-    >:last-child{
-
-        >img{
-            width: 35px;
-            height: 35px;
-            border-radius: 100%;
-            cursor: pointer;
-        }
+    > :nth-child(2) {
+      cursor: pointer;
     }
+
+    > :last-child {
+      position: relative;
+      > img {
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.HeaderOption {
+  position: absolute;
+  border: 1px solid red;
+  width: 200px;
+  border-radius: 0 0px 20px 20px;
+  top: 40px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  scale: 1;
+}
+
+.sam{
+  scale: 0;
+}
+
+.lar{
+  animation: headerOption 0.5s ease-in-out ;
+}
+
+@keyframes headerOption {
+  from{
+    transform: scale(0);
+  }
+
+  to{
+    transform: scale(1);
   }
 }

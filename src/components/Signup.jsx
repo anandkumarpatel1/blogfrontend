@@ -39,7 +39,7 @@ function SignUpForm() {
         sameSite: "None",
       };
 
-      const {data} = await axios.post('/api/v1/user/register', {name, email, password}, config)
+      const {data} = await axios.post('https://blog-backend-sigma-three.vercel.app/api/v1/user/register', {name, email, password}, config)
 
       if(data?.user){
         setUser(data)
