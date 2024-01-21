@@ -27,7 +27,7 @@ const PostCard = ({ item, chn, setChn }) => {
         `https://blog-backend-sigma-three.vercel.app/api/v1/post/deletePost/${item._id}`,
         config
       );
-      toast(data?.message);
+
       setChn(!chn);
     } catch (error) {
       toast(error.response.data.message);
