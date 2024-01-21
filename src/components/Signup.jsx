@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from 'axios'
-import {UserState} from '../context/UserProvider'
+import axios from "axios";
+import { UserState } from "../context/UserProvider";
 
-function SignUpForm() {
+function SignUpForm({ type, setType }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loader,setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
 
-  const {setUser, user} = UserState()
-  const navigate = useNavigate()
+  const { setUser, user } = UserState();
+  const navigate = useNavigate();
 
-  useEffect(() =>{
-    if(user){
-      navigate('/')
+  useEffect(() => {
+    if (user) {
+      navigate("/");
     }
-  })
+  });
 
   const handleOnSubmit = async (evt) => {
     try {
       evt.preventDefault();
-      setLoader(true)
-      if(!name){
-        return toast('Please Enter Name')
+      setLoader(true);
+      if (!name) {
+        return toast("Please Enter Name");
       }
-      if(!email){
-        return toast('Please Enter Email')
+      if (!email) {
+        return toast("Please Enter Email");
       }
-      if(!password){
-        return toast('Please Enter password')
+      if (!password) {
+        return toast("Please Enter password");
       }
 
       const config = {
@@ -39,19 +39,23 @@ function SignUpForm() {
         sameSite: "None",
       };
 
-      const {data} = await axios.post('https://blog-backend-sigma-three.vercel.app/api/v1/user/register', {name, email, password}, config)
+      const { data } = await axios.post(
+        "https://blog-backend-sigma-three.vercel.app/api/v1/user/register",
+        { name, email, password },
+        config
+      );
 
-      if(data?.user){
-        setUser(data)
+      if (data?.user) {
+        setUser(data);
         let user = await JSON.stringify(data);
         localStorage.setItem("user", user);
         navigate("/");
-        setLoader(false)
+        setLoader(false);
       }
     } catch (error) {
-      toast(error.response.data.message)
-      setLoader(false)
-      return
+      toast(error.response.data.message);
+      setLoader(false);
+      return;
     }
   };
 
@@ -83,6 +87,11 @@ function SignUpForm() {
           placeholder="Password"
         />
         <button>Sign Up</button>
+        <div>
+          <p style={{ cursor: "pointer" }} onClick={() => setType("signIn")}>
+            Sign In
+          </p>
+        </div>
       </form>
     </div>
   );

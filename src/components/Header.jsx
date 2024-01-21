@@ -4,13 +4,18 @@ import "../styles/Header.scss";
 import { UserState } from "../context/UserProvider";
 
 const Header = () => {
-  const [option, setOption] = useState(false)
+  const [option, setOption] = useState(false);
   const { user } = UserState();
   const navigate = useNavigate();
 
-  const profileHandler = () =>{
-    setOption(!option)
-  }
+  const profileHandler = () => {
+    setOption(!option);
+  };
+
+  const LogoutHandler = () => {
+    localStorage.clear('user');
+    window.location.reload()
+  };
 
   return (
     <div className="header">
@@ -28,10 +33,28 @@ const Header = () => {
             />
             <div>
               <div className={`HeaderOption ${option ? "lar" : "sam"}`}>
-                <p>Visit</p>
-                <p>Delete</p>
-                <p>Edit</p>
-                <p>Share</p>
+                <p
+                  onClick={() => {
+                    navigate("/me");
+                  }}
+                >
+                  Profile
+                </p>
+                <p onClick={LogoutHandler}>Logout</p>
+                <p
+                  onClick={() => {
+                    navigate("/contact");
+                  }}
+                >
+                  Contact Us
+                </p>
+                <p
+                  onClick={() => {
+                    navigate("/dev");
+                  }}
+                >
+                  Developer
+                </p>
               </div>
             </div>
           </div>

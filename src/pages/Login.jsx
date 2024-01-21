@@ -49,8 +49,8 @@ const Login = () => {
 
       <ToastContainer />
       <div className={containerClass} id="container">
-        <SignUpForm />
-        <SignInForm />
+        <SignUpForm type={type} setType={setType} />
+        <SignInForm type={type} setType={setType} />
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
