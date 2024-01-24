@@ -19,11 +19,11 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/me" element={<Profile />} />
-      <Analytics />
 
           </Routes>
         </UserProvider>
       </BrowserRouter>
+      <Analytics />
     </>
   );
 };
