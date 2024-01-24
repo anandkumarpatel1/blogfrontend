@@ -6,20 +6,24 @@ import Header from "./components/Header";
 import { UserProvider } from "./context/UserProvider";
 import Profile from "./pages/Profile";
 import FlotIcon from "./components/FlotIcon";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <UserProvider>
-        <Header />
-        <FlotIcon />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/me" element={<Profile />} />
-        </Routes>
-      </UserProvider>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <UserProvider>
+          <Header />
+          <FlotIcon />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/me" element={<Profile />} />
+          </Routes>
+        </UserProvider>
+      </BrowserRouter>
+      <Analytics />
+    </>
   );
 };
 
