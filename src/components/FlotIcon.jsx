@@ -75,30 +75,34 @@ const FlotIcon = () => {
         </div>
       ) : (
         <>
-          <div className="floaticon" onClick={() => setDialog(true)}>
-            <FaPlus onClick={postIconHandler} />
-          </div>
-          {dialog && (
-            <div className="floatDialog">
-              <div>
-                <RxCross2 size={30} onClick={() => setDialog(false)} />
+          {localStorage.getItem("user-token") && (
+            <>
+              <div className="floaticon" onClick={() => setDialog(true)}>
+                <FaPlus onClick={postIconHandler} />
               </div>
-              <form onSubmit={(e) => createPostHandler(e)}>
-                <input
-                  type="text"
-                  placeholder="Enter Image URL Of Post"
-                  value={pic}
-                  onChange={(e) => setPic(e.target.value)}
-                />
-                <textarea
-                  placeholder="Enter Title Of Post"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                ></textarea>
-                <button>Create Post</button>
-              </form>
-            </div>
-          )}{" "}
+              {dialog && (
+                <div className="floatDialog">
+                  <div>
+                    <RxCross2 size={30} onClick={() => setDialog(false)} />
+                  </div>
+                  <form onSubmit={(e) => createPostHandler(e)}>
+                    <input
+                      type="text"
+                      placeholder="Enter Image URL Of Post"
+                      value={pic}
+                      onChange={(e) => setPic(e.target.value)}
+                    />
+                    <textarea
+                      placeholder="Enter Title Of Post"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    ></textarea>
+                    <button>Create Post</button>
+                  </form>
+                </div>
+              )}
+            </>
+          )}
         </>
       )}
     </>
