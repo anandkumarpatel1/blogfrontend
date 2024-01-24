@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Header.scss";
 import { UserState } from "../context/UserProvider";
+import logo from '../styles/logo.png'
 
 const Header = () => {
   const [option, setOption] = useState(false);
@@ -21,7 +22,9 @@ const Header = () => {
     <div className="header">
       { localStorage.getItem('user-token') && (
         <div>
-          <div>icon</div>
+          <div>
+            <img src={logo} alt="logo" />
+          </div>
           <div>
             <p onClick={() => navigate("/")}>AnDs Blog</p>
           </div>
