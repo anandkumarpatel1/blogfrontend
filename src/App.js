@@ -5,12 +5,14 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import { UserProvider } from "./context/UserProvider";
 import Profile from "./pages/Profile";
+import FlotIcon from "./components/FlotIcon";
 
 const App = () => {
   return (
     <BrowserRouter>
       <UserProvider>
         <Header />
+        <FlotIcon />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

@@ -8,13 +8,12 @@ import { UserState } from "../context/UserProvider";
 import axios from "axios";
 
 const Home = () => {
-  const { user } = UserState();
+  const { chn, setChn } = UserState();
 
   const [posts, setPosts] = useState();
   const [pic, setPic] = useState("");
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
-  const [chn, setChn] = useState(false)
 
   const navigate = useNavigate()
 

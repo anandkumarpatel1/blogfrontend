@@ -6,6 +6,7 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState()
+  const [chn, setChn] = useState(false)
 
   const navigate = useNavigate()
 
@@ -31,7 +32,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, token, setToken }}>
+    <UserContext.Provider value={{ user, setUser, token, setToken, chn, setChn }}>
       {children}
     </UserContext.Provider>
   );
