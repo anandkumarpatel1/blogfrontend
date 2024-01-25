@@ -13,9 +13,42 @@
     }
   }
 
-  >:last-child{
+  > :last-child {
     width: 40%;
     display: flex;
     justify-content: space-around;
+
+    > div {
+      > p {
+        font-weight: 800;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .profile {
+    flex-direction: column;
+    justify-content: center;
+
+    > :first-child {
+      width: 80%;
+
+      > img {
+        width: 100%;
+      }
+    }
+
+    > :last-child {
+      width: 100%;
+
+      > div {
+        > p {
+          font-weight: 800;
+          font-size: 20px;
+        }
+      }
+    }
   }
 }
