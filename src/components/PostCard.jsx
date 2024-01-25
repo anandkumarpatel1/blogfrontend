@@ -3,9 +3,11 @@ import "../styles/PostCard.scss";
 import { CiMenuKebab } from "react-icons/ci";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import UpdatePost from "./UpdatePost";
 
 const PostCard = ({ item, chn, setChn }) => {
   const [option, setOption] = useState(false);
+  const [updateDia, setUpdateDia] = useState(false);
 
   const optionHandler = () => {
     setOption(!option);
@@ -36,11 +38,22 @@ const PostCard = ({ item, chn, setChn }) => {
   };
   return (
     <>
+      {updateDia && (
+        <UpdatePost
+          updateDia={updateDia}
+          setUpdateDia={setUpdateDia}
+          setOption={setOption}
+          title={item?.title}
+          pic={item?.pic}
+          id={item?._id}
+        />
+      )}
+
       <div className="postCard">
         <div className={`PostOption ${option ? "lar" : "sam"}`}>
           <p>Visit</p>
           <p onClick={deleteHandler}>Delete</p>
-          <p>Edit</p>
+          <p onClick={() => setUpdateDia(true)}>Edit</p>
           <p>Share</p>
         </div>
         <div>

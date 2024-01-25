@@ -96,7 +96,6 @@ const Home = () => {
         pauseOnHover
         theme="light"
       />
-      <ToastContainer />
       <div className="home">
         {loading ? (
           <Loader />
